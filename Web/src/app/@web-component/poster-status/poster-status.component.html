@@ -1,0 +1,17 @@
+<div *ngFor="let item of Object" class="container-poster flex-column">
+
+      <div class="flex-row">
+          <!-- <img *ngIf="item.NguoiTao.avatar != ''" width="40px" height="40px" [style.borderRadius]="'50%'" [src]="./assets/item.NguoiTao.avatar"> -->
+          <img *ngIf="item.NguoiTao.avatar == ''" width="40px" height="40px" [style.borderRadius]="'50%'" src="./assets/user-image.jpg">
+          <div class="flex-column">
+              <span class="tenNguoiTao"> {{item.NguoiTao.HoVaten}}
+                </span>
+                <span class="thoiGianTaoDon" (click)="chiTietSuatAn(item)" >{{item.ThoiGianTaoDon}}</span>
+          </div>
+        </div>
+        <div [innerHTML]="item.NoiDung" class="body-content">
+        </div>
+        <div class="flex-row" style="width: 100%;">
+          <app-ui-comment [idSuatAn]="item._id" style="width: 100%;"></app-ui-comment>
+        </div>
+</div>

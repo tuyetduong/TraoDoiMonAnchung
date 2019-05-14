@@ -1,0 +1,44 @@
+<div class="row content">
+  <div class="flex-row">
+    <span>Hiển thị </span>
+    <div class="custom-count-per-page">
+      <select [(ngModel)]="pageObject.amount" (change)="selectItemPerPage()">
+        <option *ngFor="let e of element" value={{e.number}}>{{e.name}}</option>
+      </select>
+    </div>
+
+
+    <span> trong tổng số {{pageObject.totalAmount}} kết quả</span>
+  </div>
+  <div>
+    <div class="custom-pagination">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+          <li class="page-item" [ngClass]="{'disabled': pageObject.page === 1}" (click)="selectPage(1)">
+            <a class="page-link custom-icon-pagination" aria-label="Previous">
+                <em class="fa fa-backward"></em>
+            </a>
+          </li>
+          <li class="page-item" [ngClass]="{'disabled': pageObject.page === 1}" (click)="nextOrPrevious('left')">
+            <a class="page-link custom-icon-pagination">
+                <em class="fa fa-caret-left"></em>
+            </a>
+          </li>
+          <li *ngFor="let item of arrPage" class="page-item" [ngClass]="{'active': pageObject.page === item}" (click)="selectPage(item)"><a
+              class="page-link">{{item}}</a></li>
+          <li class="page-item" [ngClass]="{'disabled': pageObject.page === pageObject.totalPage}" (click)="nextOrPrevious('right')">
+            <a class="page-link custom-icon-pagination" >
+                <em class="fa fa-caret-right"></em>
+            </a>
+          </li>
+          <li class="page-item" [ngClass]="{'disabled': pageObject.page === pageObject.totalPage}" (click)="selectPage(pageObject.totalPage)">
+            <a class="page-link custom-icon-pagination" aria-label="Next">
+                <em class="fa fa-forward"></em>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

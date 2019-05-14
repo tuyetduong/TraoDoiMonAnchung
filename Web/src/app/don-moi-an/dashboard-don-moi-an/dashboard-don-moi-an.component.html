@@ -1,0 +1,134 @@
+<div class="row" style="padding: 10px;">
+  <!-- column -->
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+          <div class="row" style="width: 100%">
+              <div class="col-lg-12" style="padding-right: 0px;">
+                <div class="business" *ngFor="let data of arrDonMoiAn, let y = index">
+                  <div class="business-header" *ngIf="data._id">
+                    <div class="header-content">
+                      <div class="header-item">
+                        <div class="">
+                          <span>Tên người làm: {{data.NguoiTao.HoVaten}}</span>
+                        </div>
+                        <div class="">
+                          <span>Thời gian tạo đơn: </span>
+                          <span>{{data.ThoiGian}}</span>
+                        </div>
+                      </div>
+                      <div class="header-item">
+                        <div class="">
+                          <span>Giới hạn ăn chung: </span>
+                          <span>{{data.GioiHanAnChung}}</span>
+                        </div>
+                        <div class="">
+                          <span>Tổng số bình luận: </span>
+                          <span>{{data.arrBinhLuan.length}}</span>
+                        </div>
+                      </div>
+                      <div class="header-item">
+                        <div>
+                            <span>Địa chỉ: </span>
+                            <span>{{data.DiaChiDayDu}}</span>
+                        </div>
+                        <!-- <i title="Export báo cáo" (click)="exportReport(data)" class="fa fa-download icon-download"
+                          data-toggle="modal" data-target="#export" aria-hidden="true"></i> -->
+                      </div>
+                    </div>
+                    <div class="header-content">
+                      <div class="header-item">
+                      </div>
+                      <div class="header-item">
+                      </div>
+                      <div class="header-item" id="withbuton">
+                        <div>
+                        </div>
+                        <div>
+                            <!-- <i class="fa fa-arrow-down" aria-hidden="true" (click)="getdummycheckin(y)"></i>
+                            <i class="fa fa-arrow-up" aria-hidden="true" (click)="hidden(y)"></i> -->
+                          <img *ngIf="!data.show" (click)="getdummycheckin(y)" src="assets/icon/arrow down white@3x.png" >
+                          <img *ngIf="data.show" (click)="hidden(y)" src="assets/icon/arrow up white@3x.png" >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="business-checkin" *ngIf="data.show">
+                    <table *ngIf="data.ArrNguoiAnChung?.length !== 0">
+                      <tr>
+                        <td class="stt">STT</td>
+                        <!-- <td class="avatar">Ảnh đại diện</td> -->
+                        <td class="fullname">Tên người ăn cùng</td>
+                        <td class="address">Địa chỉ</td>
+                        <td class="sdt">SDT</td>
+                        <td class="note">Ghi chú thêm</td>
+                        <td class="action">Hành động</td>
+                      </tr>
+                      <tr *ngFor='let row of data.ArrNguoiAnChung, let i = index;' [ngClass]="{'darker': i%2 === 0}">
+                        <td class="stt">{{i+1}}</td>
+                        <!-- <td class="avatar">
+                          <img data-toggle="modal" data-target="#popupImg" (click)="openPopupImg(row.photoUrl)" src="{{row.photoUrl}}">
+                        </td> -->
+                        <td class="fullname">{{row.HoVaTen}}</td>
+                        <td class="address">địa chỉ ở đâu đó</td>
+                        <td class="sdt">16465156500</td>
+                        <td class="note">{{row.SDT}}</td>
+                        <td class="action">
+                          <!-- <button>Xem thông tin chi tiết</button>
+                          <button>Xóa</button> -->
+                          <i data-toggle="modal" data-target="#dongYAnCung" (click)="getIdNguoiAnCung(row, data._id)" *ngIf="row.Status == 'stanby'" class="custom-button fa fa-check" aria-hidden="true"></i>
+                          <i data-toggle="modal" data-target="#tuChoiAnCung" (click)="getIdNguoiAnCung(row, data._id)" *ngIf="row.Status == 'stanby'" class="custom-button fa fa-ban" aria-hidden="true"></i>
+                          <i style="color: green" *ngIf="row.Status == 'agree'" class="fa fa-check" aria-hidden="true"></i>
+                          <i style="color: red" *ngIf="row.Status == 'refuse'" class="fa fa-ban" aria-hidden="true"></i>
+                        </td>
+                      </tr>
+                    </table>
+                    <table *ngIf="data.ArrNguoiAnChung?.length == 0">
+                      <span>Không có dữ liệu hiển thị</span>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div style="padding: 10px;" *ngIf="arrDonMoiAn?.totalAmount == 0">
+                Không có dữ liệu để hiển thị
+              </div>
+              <app-pagination style="width: 100%;" (clickPage)="changePage($event)"
+              (itemPerPage)="selectItemPerPage($event)"></app-pagination>
+            </div>
+          
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAP NHAN AN CUNG -->
+<div id="dongYAnCung" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Bạn có chắc chắn muốn cho người này ăn cùng bạn không?</h4>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="dongYAnCung()">Có</button>
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Không</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- TU CHOI AN CUNG -->
+<div id="tuChoiAnCung" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Bạn có chắc chắn muốn xóa người này không?</h4>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="tuChoiAnCung()">Có</button>
+              <button type="button" class="btn btn-dark" data-dismiss="modal">Không</button>
+          </div>
+      </div>
+  </div>
+</div>

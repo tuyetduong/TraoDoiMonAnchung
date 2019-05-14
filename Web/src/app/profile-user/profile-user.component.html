@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="formUser">
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="form-group">
+                      <label for="usr">Tên đăng nhập:</label>
+                      <input (keyup)="checkUser()" type="text" formControlName="TenDangNhap" class="form-control" id="usr">
+                    </div>
+                    <div class="form-group">
+                      <label for="usr">Họ tên đầy đủ:</label>
+                      <input (keyup)="checkUser()" type="text" formControlName="TenDangNhap" class="form-control" id="usr">
+                    </div>
+                    <div class="form-group">
+                      <label for="usr">Email:</label>
+                      <input (keyup)="checkUser()" type="text" formControlName="TenDangNhap" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="usr">SDT:</label>
+                        <input (keyup)="checkUser()" type="text" formControlName="TenDangNhap" class="form-control" id="usr">
+                      </div>
+                      <div class="form-group">
+                        <label for="usr">Ngày sinh:</label>
+                        <input (keyup)="checkUser()" type="text" formControlName="TenDangNhap" class="form-control" id="usr">
+                      </div>
+                  </div>
+          </div>
+
+
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

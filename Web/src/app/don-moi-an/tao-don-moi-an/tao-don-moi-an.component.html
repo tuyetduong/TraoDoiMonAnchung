@@ -1,0 +1,71 @@
+<div class="row" id="add-store">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="formDonMoiAn">
+          <div class="form-group mapcustom">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+              <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+            </agm-map>
+          </div>
+          <div class="form-group">
+            <div class="text-caution">
+              <span><i><b>LƯU Ý:</b> Vui lòng nhập chính xác tên Tỉnh/Thành phố và Quận/Huyện để tránh sai sót trong
+                  việc tìm
+                  kiếm</i></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pwd" style="margin-right: 10px;">Tỉnh/Thành phố (*):</label>
+            <ng-select [items]="dropTinh_TP" [addTag]="true" placeholder="Tỉnh/Thành Phố" formControlName="Tinh_TP"
+              bindLabel="name" notFoundText="{{notFoundText}}" addTagText="Thêm Tỉnh/Thành phố"
+              (change)="ConverString()">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="pwd" style="margin-right: 10px;">Quận/Huyện (*):</label>
+            <ng-select [items]="dropQuan_Huyen" [addTag]="true" placeholder="Quận/Huyện" formControlName="Quan_Huyen"
+              bindLabel="name_with_type" notFoundText="{{notFoundText}}" addTagText="Thêm Quận/Huyện"
+              (change)="ConverString()">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="pwd" style="margin-right: 10px;">Xã/Phường:</label>
+            <ng-select [items]="dropXa_Phuong" [addTag]="true" placeholder="Xã/Phường" formControlName="Xa_Phuong"
+              bindLabel="name_with_type" notFoundText="{{notFoundText}}" addTagText="Thêm Xã/Phường"
+              (change)="ConverString()">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label for="usr">Địa chỉ:</label>
+            <input (keyup)="ConverString()" type="text" class="form-control" id="usr" placeholder="Địa chỉ chi tiết"
+              formControlName="Address">
+          </div>
+          <div class="form-group">
+            <label for="pwd" style="margin-right: 10px;">Giới hạn số người ăn chung:</label>
+            <ng-select [items]="dropGioiHanAnChung" formControlName="GioiHanAnChung"
+             notFoundText="{{notFoundText}}"
+            >
+            </ng-select>
+          </div>
+          <div class="form-group" style="height: 69px;">
+            <label for="pwd">Thời gian chốt đơn:</label>
+            <mat-form-field>
+                <input (dateInput)="maskInput()" matInput [matDatepicker]="picker1" formControlName="ThoiGianChotDon">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+              <div class="text-arlet" *ngIf="!checkDayOn">
+                  <span>Ngày không hợp lệ! Ngày hợp lệ là ngày có định dạng ngày/tháng/năm</span>
+              </div>
+          </div>
+
+          <ckeditor [(ngModel)]="content" formControlName="NoiDung" debounce="500"></ckeditor>
+
+          <button type="button" [disabled]="!formDonMoiAn.valid || !checkDayThoiGianChotDon" class="btn btn-success" (click)="taoSuatAn()">Lưu lại</button>
+          <button type="button" class="btn btn-dark" (click)="Cancel()">Huỷ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

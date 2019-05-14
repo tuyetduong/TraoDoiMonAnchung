@@ -1,0 +1,90 @@
+.business {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  .business-header {
+    background: #9c9c9c;
+    color: #e9ecef;
+    padding: 10px;
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      .header-item {
+        width: 30%
+      }
+      #withbuton {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+  .business-checkin {
+    width: 95%;
+    align-self: center;
+    table {
+      width: 100%;
+      border: 1px solid #e9ecef;
+      tr {
+        height: 50px;
+        .stt {
+          text-align: center;
+          width: 5%;
+        }
+        .avatar {
+          width: 10%;
+          img {
+            height: 50px;
+            cursor: pointer;
+          }
+        }
+        .fullname {
+          width: 30%;
+        }
+        .address {
+          width: 25%;
+        }
+        .sdt{
+          width: 15%;
+        }
+        .note {
+          width: 15%;
+        }
+        .start {
+          padding-left: 1%;
+          width: 75%
+        }
+        .date-start {
+          width: 25%
+        }
+        .action {
+          i {
+            margin: 0px 5px;
+          }
+        }
+        // .img-start {
+        //   width: 25%
+        // }
+      }
+    }
+  }
+  .darker {
+    background: #eeeeee
+  }
+}
+
+.icon-download {
+  font-size: x-large;
+  color: white;
+  position: absolute;
+  right: 17px;
+  cursor: pointer;
+}
+
+.icon-download :hover {
+  color: #eeeeee;
+}
+
+.custom-button {
+  cursor: pointer;
+}

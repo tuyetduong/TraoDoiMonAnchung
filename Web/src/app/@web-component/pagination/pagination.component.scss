@@ -1,0 +1,49 @@
+.content {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+  align-content: stretch;
+  margin: 10px 0px 0px 0px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.custom-count-per-page {
+  margin: 10px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+  }
+
+// .custom-pagination {
+//   nav {
+//     ul {
+//       li {
+//         a .custom-icon-pagination {
+//           padding: 7px 9px 3px 9px;
+//           em {
+//             font-size: large;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+.custom-icon-pagination {
+  height: 40px;
+  padding: 9px 9px 7px 9px
+  em {
+    font-size: large;
+    color: none;
+  }
+}

@@ -1,0 +1,10 @@
+<div>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="true" [zoom]="zoom">
+        <agm-marker *ngFor="let item of objectSuatAn; let i = index" [latitude]="item.Location.lat" [longitude]="item.Location.lng" [iconUrl]="storeMarkerIcon">
+          <agm-info-window>
+            <!-- <strong>{{m.info}}</strong> -->
+            
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+</div>

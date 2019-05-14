@@ -1,0 +1,16 @@
+<div class="container">
+  <div>
+    <button class="button-tao-don btn btn-info" (click)="taoDonMoiAn()" >
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      Tạo đơn mời ăn</button>
+  </div>
+  <div class="flex-row">
+    <div class="news-feed">
+        <app-poster-status></app-poster-status>
+    </div>
+    <div class="google-map">
+      <app-agm-googlemap [objectSuatAn]="objectSuatAn"></app-agm-googlemap>
+    </div>
+  </div>
+  
+</div>

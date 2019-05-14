@@ -1,0 +1,64 @@
+agm-map{
+    height: 766px;
+}
+
+.container{
+    padding: 20px;
+    margin-right: 10px;
+}
+.choose_file{
+    position:relative;
+    display:inline-block;    
+	border-radius:8px;
+    border:#ebebeb solid 1px;
+    width:130px; 
+    padding: 4px 6px 4px 8px;
+    font: normal 14px Myriad Pro, Verdana, Geneva, sans-serif;
+    color: #7f7f7f;
+    margin-top: 2px;
+	background:white
+}
+.choose_file:hover {
+    background: greenyellow;
+    cursor: pointer;
+    color: white;
+}
+
+// CUSTOM LAI INPUT DATEPICKER
+:host ::ng-deep mat-form-field {
+    width: 100%;
+    height: 36px;
+  
+    div {
+      height: 100%;
+      padding-bottom: 0 !important;
+  
+      .mat-form-field-flex {
+        border: 1px solid #e9ecef !important;
+        border-radius: 2px !important;
+  
+        .mat-form-field-infix {
+          border-top: none;
+          padding: 0px;
+          input {
+            padding: 6px 12px;
+            height: 100%;
+            font-family: "Nunito Sans", sans-serif;
+            font-weight: 400;
+          }
+        }
+  
+        .mat-form-field-suffix {
+          position: unset;
+          margin: auto;
+          display: flex;
+          align-items: center;
+          font-size: x-large;
+        }
+      }
+  
+      .mat-form-field-underline {
+        display: none;
+      }
+    }
+  }
